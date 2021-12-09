@@ -11,9 +11,14 @@ public class UserManagerService {
     public Boolean register(String username, String password, String sex, String age, String[] hobby, String remark) {
         int int_age=Integer.parseInt(age);
         StringBuffer hobbys=new StringBuffer();
-        for (String h:hobby){
-           hobbys.append(h);
-            hobbys.append(",");
+        if(hobby==null){
+            hobbys.append("");
+        }
+        else {
+            for (String h : hobby) {
+                hobbys.append(h);
+                hobbys.append(",");
+            }
         }
         UserPO po=new UserPO(username,password,int_age,sex,hobbys.toString(),remark);
         return userDao.insert(po);
@@ -44,5 +49,9 @@ public class UserManagerService {
     public Boolean delete(String id) {
         int int_id=Integer.parseInt(id);
        return userDao.delete(int_id);
+    }
+
+    public Boolean check(String username) {
+        return userDao. check(username);
     }
 }

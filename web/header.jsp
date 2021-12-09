@@ -21,8 +21,8 @@
 <a href="${pageContext.request.contextPath}<%--<%=request.getContextPath()%>--%>/register.jsp">注册</a>
 <a href="${pageContext.request.contextPath}/user/queryAll">用户列表</a>
 <%
-Object obj=session.getAttribute("userLogin");
-if (obj==null){
+Object obj_userLogin=session.getAttribute("userLogin");
+if (obj_userLogin==null){
 %>
 <a href="${pageContext.request.contextPath}/login.jsp">登录</a>
 <%

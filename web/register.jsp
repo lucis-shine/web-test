@@ -8,11 +8,13 @@
 <body>
 <%@include file="/header.jsp" %>
 <h2>用户注册</h2>
-<form action="user/register.do">
+<form action="user/register.do" onsubmit="return validateSubmit();">
     <table>
-        <tr>
+        <tr id="name" >
             <td>用户名：</td>
-            <td><input type="text" name="username"></td>
+            <td><input type="text"  id="username" name="username" onblur="checkName();">
+            <span id="havingname" ></span>
+            </td>
         </tr>
         <tr>
             <td>密码：</td>
@@ -58,4 +60,6 @@
     </table>
 </form>
 </body>
+<script type="text/javascript" src="js/normal_ajax.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
 </html>

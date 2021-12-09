@@ -135,4 +135,20 @@ public class UserDao {
         }
         return false;
     }
+
+    public Boolean check(String username) {
+        Connection conn = DataSourceUtil.getConnection();
+        try {
+            String sql ="select USERNAME from user where USERNAME=?";
+            PreparedStatement ps= conn.prepareStatement(sql);
+            ps.setString(1,username);
+            ResultSet  set = ps.executeQuery();
+            while (set.next()){
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

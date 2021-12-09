@@ -3,8 +3,6 @@ package controller;
 import service.UserManagerService;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,12 +21,13 @@ public class UserRegisterController extends HttpServlet {
         String  age=  req.getParameter("age");
         String[]  hobby=  req.getParameterValues("hobby");
         String  remark=  req.getParameter("remark");
-        System.out.println(username+password+sex+age+remark);
+       /* System.out.println(username+password+sex+age+remark);
         for (String h:hobby){
             System.out.println(h);
-        }
-        Boolean b=userManagerService.register(username,password,sex,age,hobby,remark);
+        }*/
         resp.setContentType("text/html;charset=UTF-8");
+
+        Boolean b=userManagerService.register(username,password,sex,age,hobby,remark);
         if (b){
             resp.getWriter().println("<font color='red' size='15'>欢迎你"+",注册成功</font>");
         }
