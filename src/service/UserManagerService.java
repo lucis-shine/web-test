@@ -54,4 +54,8 @@ public class UserManagerService {
     public Boolean check(String username) {
         return userDao. check(username);
     }
+
+    public List<String> getNameBykeyWord(String keyWord) {
+        return userDao. getNameBykeyWord(keyWord);
+    }
 }

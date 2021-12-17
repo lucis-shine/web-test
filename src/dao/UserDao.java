@@ -151,4 +151,21 @@ public class UserDao {
         }
         return false;
     }
+
+    public List<String> getNameBykeyWord(String keyWord) {
+        List<String> list =new ArrayList<>();
+        Connection conn = DataSourceUtil.getConnection();
+        try {
+            String sql ="select USERNAME from user where USERNAME like '%"+keyWord+"%'";
+            PreparedStatement ps= conn.prepareStatement(sql);
+            ResultSet  set = ps.executeQuery();
+            while (set.next()){
+                list.add(set.getString(1));
+            }
+            return list;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

@@ -20,6 +20,7 @@
 <a href="${pageContext.request.contextPath}/index.jsp">首页</a>
 <a href="${pageContext.request.contextPath}<%--<%=request.getContextPath()%>--%>/register.jsp">注册</a>
 <a href="${pageContext.request.contextPath}/user/queryAll">用户列表</a>
+<a href="${pageContext.request.contextPath}/queryAllByAjax.html">用户列表ajax</a>
 <%
 Object obj_userLogin=session.getAttribute("userLogin");
 if (obj_userLogin==null){
