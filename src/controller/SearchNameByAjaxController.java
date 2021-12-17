@@ -20,6 +20,7 @@ public class SearchNameByAjaxController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String keyWord=req.getParameter("name");
         System.out.println(keyWord);
+        resp.setHeader( "Access-Control-Allow-Origin", "*" );
         List<String> usernameList =userManagerService.getNameBykeyWord(keyWord);
         System.out.println(usernameList);
         StringBuffer buffer=new StringBuffer();

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域</title>
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $("button").bind("click",function (){
+                var obj=new Object();
+                obj.name=$("#name").val();
+                $.ajax({
+                    async:true,
+                    url:"http://localhost:8080/web_war_exploded/user/searchNameByAjaxJsonp",
+                    type:"POST",
+                    data:obj,
+                    dataType:"jsonp",
+                    jsonpCallback : "jsonpCallback",//自定义的jsonp回调函数名,默认为
+                    //jQuery自动生成的随机函数
+                    jsonp : "callback",//传递给请求处理程序或页面的,用以获得jsonp回
+                    //调函数名的参数名(默认为callback)
+                    success:successCallback,
+                    error:function (e){
+                        console.log(e.status);
+                        console.log(e.responseText);
+                    }
+                });
+            });
+        });
+        function successCallback(data){
+            console.log(data);
+        }
+
+    </script>
+</head>
+<body>
+<input type="text" id="name"><button>跨域访问</button>
+</body>
+</html>
